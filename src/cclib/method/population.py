@@ -1,12 +1,11 @@
-# This file is part of cclib (http://cclib.sf.net), a library for parsing
-# and interpreting the results of computational chemistry packages.
+# -*- coding: utf-8 -*-
 #
-# Copyright (C) 2006-2014, the cclib development team
+# Copyright (c) 2016, the cclib development team
 #
-# The library is free software, distributed under the terms of
-# the GNU Lesser General Public version 2.1 or later. You should have
-# received a copy of the license along with cclib. You can also access
-# the full license online at http://www.gnu.org/copyleft/lgpl.html.
+# This file is part of cclib (http://cclib.github.io) and is distributed under
+# the terms of the BSD 3-Clause License.
+
+"""Population analyses based on cclib data."""
 
 import logging
 
@@ -16,7 +15,7 @@ from .calculationmethod import Method
 
 
 class Population(Method):
-    """A base class for all population-type methods."""
+    """An abstract base class for population-type methods."""
     
     def __init__(self, data, progress=None, \
                  loglevel=logging.INFO, logname="Log"):

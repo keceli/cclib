@@ -1,14 +1,13 @@
-# This file is part of cclib (http://cclib.sf.net), a library for parsing
-# and interpreting the results of computational chemistry packages.
+# -*- coding: utf-8 -*-
 #
-# Copyright (C) 2006-2014, the cclib development team
+# Copyright (c) 2016, the cclib development team
 #
-# The library is free software, distributed under the terms of
-# the GNU Lesser General Public version 2.1 or later. You should have
-# received a copy of the license along with cclib. You can also access
-# the full license online at http://www.gnu.org/copyleft/lgpl.html.
+# This file is part of cclib (http://cclib.github.io) and is distributed under
+# the terms of the BSD 3-Clause License.
 
-import random # For sometimes running the progress updater
+"""Calculation of Mayer's bond orders based on data parsed by cclib."""
+
+import random
 
 import numpy
 
@@ -16,7 +15,7 @@ from .density import Density
 
 
 class MBO(Density):
-    """Calculate the density matrix."""
+    """Mayer's bond orders"""
 
     def __init__(self, *args):
 
@@ -107,9 +106,11 @@ class MBO(Density):
 
                     for b in indices[j]:
 
-                        tempsumA += 2 * PS[0][a][b] * PS[0][b][a]
                         if unrestricted:
+                            tempsumA += 2 * PS[0][a][b] * PS[0][b][a]
                             tempsumB += 2 * PS[1][a][b] * PS[1][b][a]
+                        else:
+                            tempsumA += PS[0][a][b] * PS[0][b][a]
 
                 self.fragresults[0][i, j] = tempsumA
                 self.fragresults[0][j, i] = tempsumA
