@@ -387,7 +387,7 @@ class Gaussian(logfileparser.Logfile):
         #   in the event the standard orientation isn't available.
         # Don't extract from Input or Z-matrix orientation in a BOMD run, as only
         #   the final geometry should be kept but extract inputatoms.
-        if line.find("Input orientation") > -1 or line.find("Z-Matrix orientation") > -1:
+        if line.find("Input orientation:") > -1 or line.find("Z-Matrix orientation") > -1:
 
             # If this is a counterpoise calculation, this output means that
             #   the supermolecule is now being considered, so we can set:
