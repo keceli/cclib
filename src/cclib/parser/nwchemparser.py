@@ -108,8 +108,8 @@ class NWChem(logfileparser.Logfile):
                 if "rms cartesian step threshold" in line:
                     xrms = float(line.split()[-1])
                 line = next(inputfile)
-
-            self.set_attribute('geotargets', [gmax, grms, xmax, xrms])
+            if gmax and grms and xmax and xrms:
+                self.set_attribute('geotargets', [gmax, grms, xmax, xrms])
 
         # NWChem does not normally print the basis set for each atom, but rather
         # chooses the concise option of printing Gaussian coefficients for each
