@@ -98,6 +98,7 @@ class NWChem(logfileparser.Logfile):
         if line.strip() == "NWChem Geometry Optimization":
             self.skip_lines(inputfile, ['d', 'b', 'b', 'b', 'b', 'title', 'b', 'b'])
             line = next(inputfile)
+            gmax, grms, xmax, xrms = 0, 0, 0, 0
             while line.strip():
                 if "maximum gradient threshold" in line:
                     gmax = float(line.split()[-1])
@@ -108,8 +109,7 @@ class NWChem(logfileparser.Logfile):
                 if "rms cartesian step threshold" in line:
                     xrms = float(line.split()[-1])
                 line = next(inputfile)
-            if gmax and grms and xmax and xrms:
-                self.set_attribute('geotargets', [gmax, grms, xmax, xrms])
+            self.set_attribute('geotargets', [gmax, grms, xmax, xrms])
 
         # NWChem does not normally print the basis set for each atom, but rather
         # chooses the concise option of printing Gaussian coefficients for each
