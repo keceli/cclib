@@ -379,8 +379,8 @@ class NWChem(logfileparser.Logfile):
                     while line.strip():
                         if len(line.split()) == 5:
                             it, energy, gnorm, gmax, time = line.split()
-                        gnorm = self.float(gnorm)
-                        values.append([gnorm])
+                            gnorm = self.float(gnorm)
+                            values.append([gnorm])
                         try:
                             line = next(inputfile)
                         # Is this the end of the file for some reason?
