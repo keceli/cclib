@@ -377,7 +377,8 @@ class NWChem(logfileparser.Logfile):
                     self.skip_line(inputfile, 'dashes')
                     line = next(inputfile)
                     while line.strip():
-                        it, energy, gnorm, gmax, time = line.split()
+                        if len(line.split()) == 5:
+                            it, energy, gnorm, gmax, time = line.split()
                         gnorm = self.float(gnorm)
                         values.append([gnorm])
                         try:
